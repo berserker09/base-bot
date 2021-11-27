@@ -65,7 +65,7 @@ const isGroup = from.endsWith('@g.us')
 const sender = sam.key.fromMe ? senpai.user.jid : isGroup ? sam.participant : sam.key.remoteJid
 const senderNumber = sender.split("@")[0]
 const isMe = senderNumber == botNumber
-const conts = sam.key.fromMe ? client.user.jid : senpai.contacts[sender] || { notify: jid.replace(/@.+/, '') }
+const conts = sam.key.fromMe ? senpai.user.jid : senpai.contacts[sender] || { notify: jid.replace(/@.+/, '') }
 const pushname = sam.key.fromMe ? senpai.user.name : conts.notify || conts.vname || conts.name || '-'
 
 switch (command) {
