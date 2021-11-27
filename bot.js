@@ -12,8 +12,8 @@ async function iniciar () {
         })
         fs.existsSync('./session.json') && client.loadAuthInfo('./session.json')
         client.on('connecting', () => {
-	console.log(color('> INFO ', 'white'), color('Conectando...')
-	})
+        console.log('Conectando')
+        })
         client.on('open', () => {
 	console.log(color('> INFO ', 'white'), color('Conectado')
         })
