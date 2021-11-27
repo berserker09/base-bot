@@ -1,4 +1,4 @@
-# Un Simple Bot 
+# Un Simple Bot De Auto Respuestas
 
 <p align="center">
 <img src="./lib/thumb.jpeg" width="300" height="480"/>
