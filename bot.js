@@ -3,25 +3,23 @@ const fs = require('fs');
 const prefix = '.'
 
 async function iniciar () { 
-        const client = new WAConnection()
-//Aquí el "client" lo pueden cambiar a su gusto. Pero si cambian, tendrán que cambiar todos los "client" por el cambio que hicieron.
-        client.logger.level = 'warn'
-        client.version = [2, 2143, 3]
-        client.on('qr', () => {
-	console.log(color('[','white'), color('!','red'), color(']','white'), color(' Escanea el código qr'))
+        const senpai = new WAConnection()
+        senpai.logger.level = 'warn'
+        senpai.version = [2, 2143, 3]
+        senpai.on('qr', () => {
         })
-        fs.existsSync('./session.json') && client.loadAuthInfo('./session.json')
-        client.on('connecting', () => {
+        fs.existsSync('./session.json') && senpai.loadAuthInfo('./session.json')
+        senpai.on('connecting', () => {
         console.log('Conectando')
         })
-        client.on('open', () => {
-	console.log(color('> INFO ', 'white'), color('Conectado')
+        senpai.on('open', () => {
+        console.log('Conectado exitosamente :D')
         })
         await client.connect({timeoutMs: 30*1000})
-        fs.writeFileSync('./session.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
+        fs.writeFileSync('./session', JSON.stringify(senpai.base64EncodedAuthInfo(), null, '\t'))
         
 
-client.on('chat-update', async (sam) => {
+senpai.on('chat-update', async (sam) => {
 try {	  
 if (!sam.hasNewMessage) return
 if (!sam.messages) return
@@ -60,20 +58,20 @@ const arg = chats.slice(command.length + 2, chats.length)
 const args = budy.trim().split(/ +/).slice(1)
 const isCmd = budy.startsWith(prefix)
 const q = args.join(' ')
-const soyYo = client.user.jid
-const botNumber = client.user.jid.split("@")[0]
-const ownerNumber = ['########@s.whatsapp.net']
+const soyYo = senpai.user.jid
+const botNumber = senpai.user.jid.split("@")[0]
+const ownerNumber = ['522213261679@s.whatsapp.net']
 const isGroup = from.endsWith('@g.us')
-const sender = sam.key.fromMe ? client.user.jid : isGroup ? sam.participant : sam.key.remoteJid
+const sender = sam.key.fromMe ? senpai.user.jid : isGroup ? sam.participant : sam.key.remoteJid
 const senderNumber = sender.split("@")[0]
 const isMe = senderNumber == botNumber
-const conts = sam.key.fromMe ? client.user.jid : client.contacts[sender] || { notify: jid.replace(/@.+/, '') }
-const pushname = sam.key.fromMe ? client.user.name : conts.notify || conts.vname || conts.name || '-'
+const conts = sam.key.fromMe ? client.user.jid : senpai.contacts[sender] || { notify: jid.replace(/@.+/, '') }
+const pushname = sam.key.fromMe ? senpai.user.name : conts.notify || conts.vname || conts.name || '-'
 
 switch (command) {
 
 case 'bot':
-client.sendMessage(from, 'Hola,felicidades, has logrado enviar un mensaje mediante un servidor externo😚', text, {quoted : sam})
+client.sendMessage(from, 'Hola,felicidades, has logrado enviar un mensaje mediante un servidor externo😚', text, {quoted : sam, sendEphemeral: true})
 break
                 
 }
