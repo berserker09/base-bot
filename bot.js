@@ -10,15 +10,15 @@ async function iniciar () {
         client.on('qr', () => {
 	console.log(color('[','white'), color('!','red'), color(']','white'), color(' Escanea el código qr'))
         })
-        fs.existsSync('./Samu330.json') && client.loadAuthInfo('./Samu330.json')
+        fs.existsSync('./session.json') && client.loadAuthInfo('./session.json')
         client.on('connecting', () => {
-        console.log('Conectando')
-        })
+	console.log(color('> INFO ', 'white'), color('Conectando...')
+	})
         client.on('open', () => {
-	console.log(color('> INFO ', 'white'), color('Conectado'))
+	console.log(color('> INFO ', 'white'), color('Conectado')
         })
         await client.connect({timeoutMs: 30*1000})
-        fs.writeFileSync('./Samu330.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
+        fs.writeFileSync('./session.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
         
 
 client.on('chat-update', async (sam) => {
