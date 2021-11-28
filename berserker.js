@@ -4,7 +4,7 @@ const
         Mimetype,
         MessageType,
         } = require('@adiwajshing/baileys');
-//==================================\\
+
 const fs = require('fs');
 const prefix = '.'
 
@@ -26,6 +26,7 @@ async function iniciar () {
 	})
 		await senpai.connect({timeoutMs: 30*1000})
   fs.writeFileSync('./session.json', JSON.stringify(senpai.base64EncodedAuthInfo(), null, '\t'))
+
 senpai.on('chat-update', async (mek) => {
 try {	  
 if (!mek.hasNewMessage) return
