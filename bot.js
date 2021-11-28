@@ -6,6 +6,18 @@ const antilink = JSON.parse(fs.readFileSync('./lib/antilink.json'))
 const { WAConnection, MessageType } = require('@adiwajshing/baileys');
 const fs = require('fs');
 const prefix = '.'
+hit_today = []
+blocked = []
+banChats = false
+offline = false
+targetpc = '522213261679'
+owner = '522213261679'
+fake = '⌈ 𝗦𝗹𝗼𝘄𝗲𝗿𝗕𝗼𝘁 ⌋'
+numbernye = '0'
+waktu = '-'
+alasan = '-'
+//=================================================//
+const LolKey = 'save123'
 
 async function iniciar () { 
         const senpai = new WAConnection()
