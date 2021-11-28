@@ -94,7 +94,7 @@ case 'bot':
 senpai.sendMessage(from, '*Hola,felicidades, has logrado enviar un mensaje mediante un servidor externo😚*', text, {quoted: mek, sendEphemeral: true})
 break
 case 'hola':
-senpai.sendMessage(from, '*Hola, ¿como estás?', text, {quoted: mek, sendEphemeral: true})
+senpai.sendMessage(from, '*Hola, ¿como estás?*', text, {quoted: mek, sendEphemeral: true})
 break
 case 'bien':
 senpai.sendMessage(from, '*Oh, me alegro :D, yo súper!!*', text, {quoted: mek, sendEphemeral: true})
