@@ -12,17 +12,16 @@ async function iniciar () {
         const senpai = new WAConnection()
         senpai.logger.level = 'warn'
         senpai.version = [2, 2143, 3]
-        console.log('>', color('INFO','blue'),'Escanea el código ( qr ) a continuación...')
+        console.log('Escanea el código ( qr ) a continuación...')
 	senpai.on('qr', () => {
-	console.log(color('[','white'), color('!','red'), color(']','white'), color(' Escanea el código qr'))
+	console.log('Escanea el código qr')
 	})
-
 	fs.existsSync('./session.json') && senpai.loadAuthInfo('./session.json')
 	senpai.on('connecting', () => {
-	console.log(color('> INFO ', 'white'), color('Conectando...'))
+	console.log('Conectando...')
 	})
 	senpai.on('open', () => {
-	console.log(color('> INFO ', 'white'), color('Conectado'))
+	console.log('Conectado'))
 	})
 		await senpai.connect({timeoutMs: 30*1000})
   fs.writeFileSync('./session.json', JSON.stringify(senpai.base64EncodedAuthInfo(), null, '\t'))
