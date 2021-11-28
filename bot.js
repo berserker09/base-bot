@@ -1,3 +1,8 @@
+//Files json
+const welkom = JSON.parse(fs.readFileSync('./lib/welkom.json'))
+const antilink = JSON.parse(fs.readFileSync('./lib/antilink.json'))
+
+//Wa connet
 const { WAConnection, MessageType } = require('@adiwajshing/baileys');
 const fs = require('fs');
 const prefix = '.'
