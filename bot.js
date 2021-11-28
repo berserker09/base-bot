@@ -40,7 +40,7 @@ senpai.on('CB:action,,call', async json => {
 		    }
 			teks =  `Hola🙋🏻‍♂️ @${num.split('@')[0]} Bienvenid@ a ${mdata.subject}\nRecuerda seguir las reglas\n\nDescripcion\n${mdata.desc} `
 			let buff = await getBuffer(ppimg)
-		    client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+		        senpai.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'remove') {
 			num = anu.participants[0]
 			try {
