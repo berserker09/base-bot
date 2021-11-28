@@ -2,13 +2,13 @@
   "name": "bot",
   "version": "9.0.0.0",
   "description": "No comment",
-  "main": "bot.js",
+  "main": "putoXD.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bot.js"
+    "start": "node putoXD.js"
   },
   "keywords": [
     "termux",
