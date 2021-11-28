@@ -220,23 +220,6 @@ senpai.on('chat-update', async (mek) => {
 
 switch (command) {
 
-case prefix+ 'pack':
-const imagen = fs.readFileSync('./media/pack.jpeg')
-senpai.sendMessage(from, imagen, MessageType.image,)
-break 
-case prefix+ 'pussy':
-const imagen = fs.readFileSync('./media/pussy.jpeg')
-senpai.sendMessage(from, imagen, MessageType.image)
-break 
-case prefix+ 'hentai':
-const video = fs.readFileSync('./media/hentai.mp4')
-senpai.sendMessage(from, video, MessageType.video, {quoted mek, mimetype: 'video/mp4', caption: '*Disfruta 😈🔥*', duration: 66666666, sendEpemeral: true})
-break 
-case prefix+ 'loli':
-const audio = fs.readFileSync('./media/onichan.mp3')
-senpai.sendMessage(from, audio, MessageType.audio, {quoted mek, mimetype: 'audio/mp3', duration: -6666666})
-senpai.sendMessage(from, audio, MessageType.audio, {quoted mek, mimetype: 'audio/mp3', duration: -6666666, ptt: true sendEpemeral: true})
-break 
 case prefix+ 'menu':
 senpai.sendMessage(from, '*Hola, esto es solo una base de bot de auto respuestas después se le añadira el menu*', text, {quoted: mek, sendEphemeral: true})
 break
