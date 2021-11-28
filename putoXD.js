@@ -222,11 +222,11 @@ switch (command) {
 
 case prefix+ 'pack':
 const imagen = fs.readFileSync('./media/pack.jpeg')
-senpai.sendMessage(from, imagen, MessageType.image, {quoted mek, sendEpemeral: true})
+senpai.sendMessage(from, imagen, MessageType.image,)
 break 
 case prefix+ 'pussy':
 const imagen = fs.readFileSync('./media/pussy.jpeg')
-senpai.sendMessage(from, imagen, MessageType.image))
+senpai.sendMessage(from, imagen, MessageType.image)
 break 
 case prefix+ 'hentai':
 const video = fs.readFileSync('./media/hentai.mp4')
