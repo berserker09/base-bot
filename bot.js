@@ -86,7 +86,7 @@ case 'gracias':
 senpai.sendMessage(from, '*De nada para servirte 🙇*', text, {quoted: mek, sendEphemeral: true})
 break
 case 'onichan':
-client.sendMessage(from, '*🔥 Senpai ${pushname} 🔥*', text, {quoted: { key: {
+senpai.sendMessage(from, '*🔥 Senpai ${pushname} 🔥*', text, {quoted: { key: {
 fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
 },
