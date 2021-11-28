@@ -91,7 +91,7 @@ fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
 },
 message: {
-"documentMessage": { "title": "${mdata.subject}", 'jpegThumbnail': fs.readFileSync('./media/logo.jpeg')}}
+"documentMessage": { "title": "${mdata.subject}", 'jpegThumbnail': fs.readFileSync('./media/thumb.jpeg')}}
 }})
 break
 
