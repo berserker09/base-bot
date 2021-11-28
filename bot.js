@@ -74,7 +74,7 @@ async function starts() {
 	console.log(color('[ BOT]','aqua'), color("hola xd", "yellow"))
 	console.log('>', '[',color('INFO','blue'),']','me chupas un huevo.')
 	senpai.on('qr', () => {
-	console.log(color('[','white'), color('!','red'), color(']','white'), color(' Escanea El CÃ³digo QR De Arriba'))
+	console.log(color('[','white'), color('!','red'), color(']','white'), color(' Escanea El Codigo QR De Arriba'))
 	})
 
 	fs.existsSync('./session.json') && senpai.loadAuthInfo('./session.json')
@@ -90,7 +90,7 @@ async function starts() {
     senpai.on('CB:action,,call', async json => {
     const callerId = json[2][0][1].from;
     console.log("call dari "+ callerId)
-        senpai.sendMessage(callerId, "Sistema De Bloqueo AutomÃ¡tico, NO LLAMES POR FAVOR", MessageType.text)
+        senpai.sendMessage(callerId, "Sistema De Bloqueo Automatico, NO LLAMES POR FAVOR", MessageType.text)
         await sleep(4000)
         await senpai.blockUser(callerId, "add")
 })
@@ -107,7 +107,7 @@ async function starts() {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks  = `Hola @${num.split('@')[0]}? Bienvenido\a a ${mdata.subject}\n\nfavor de leer las reglas\ndescripcion\n${mdata.desc}`
+				teks  = `Hola @${num.split('@')[0]}👋 Bienvenido\a a ${mdata.subject}\n\nfavor de leer las reglas\ndescripcion\n${mdata.desc}`
 				let buff = await getBuffer(ppimg)
 				senpai.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'remove') {
@@ -117,7 +117,7 @@ async function starts() {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `*@${num.split('@')[0]}* ${leaval}`
+				teks = `*@${num.split('@')[0]}* ${leave}`
 				let buff = await getBuffer(ppimg)
 				senpai.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'promote') {
@@ -169,7 +169,7 @@ ${demote}`
 			console.log('Error : %s', color(e, 'red'))
 		}
 })
-	//ActualizaciÃ³n De Chat.
+	//Actualizacion De Chat.
 senpai.on('chat-update', async (mek) => {
 	try {
         if (!mek.hasNewMessage) return
