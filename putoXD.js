@@ -226,11 +226,11 @@ senpai.sendMessage(from, imagen, MessageType.image, {quoted mek, sendEpemeral: t
 break 
 case prefix+ 'pussy':
 const imagen = fs.readFileSync('./media/pussy.jpeg')
-senpai.sendMessage(from, imagen, MessageType.image, {quoted mek, sendEpemeral: true})
+senpai.sendMessage(from, imagen, MessageType.image))
 break 
 case prefix+ 'hentai':
 const video = fs.readFileSync('./media/hentai.mp4')
-senpai.sendMessage(from, video, MessageType.video, {quoted mek, mimetype: 'video/mp4', caption: '*Disfruta ðŸ”¥*', duration: 66666666 ,sendEpemeral: true})
+senpai.sendMessage(from, video, MessageType.video, {quoted mek, mimetype: 'video/mp4', caption: '*Disfruta 😈🔥*', duration: 66666666, sendEpemeral: true})
 break 
 case prefix+ 'loli':
 const audio = fs.readFileSync('./media/onichan.mp3')
@@ -238,27 +238,27 @@ senpai.sendMessage(from, audio, MessageType.audio, {quoted mek, mimetype: 'audio
 senpai.sendMessage(from, audio, MessageType.audio, {quoted mek, mimetype: 'audio/mp3', duration: -6666666, ptt: true sendEpemeral: true})
 break 
 case prefix+ 'menu':
-senpai.sendMessage(from, '*Hola, esto es solo una base de bot de auto respuestas despuÃ©s se le aÃ±adira el menu*', text, {quoted: mek, sendEphemeral: true})
+senpai.sendMessage(from, '*Hola, esto es solo una base de bot de auto respuestas después se le añadira el menu*', text, {quoted: mek, sendEphemeral: true})
 break
 case prefix+ 'bot':
-senpai.sendMessage(from, '*Hola,felicidades, has logrado enviar un mensaje mediante un servidor externoðŸ˜š*', text, {quoted: mek, sendEphemeral: true})
+senpai.sendMessage(from, '*Hola,felicidades, has logrado enviar un mensaje mediante un servidor externo😚*', text, {quoted: mek, sendEphemeral: true})
 break
 case prefix+ 'hola':
-senpai.sendMessage(from, '*Hola, Â¿como estÃ¡s?', text, {quoted: mek, sendEphemeral: true})
+senpai.sendMessage(from, '*Hola, ¿como estas?', text, {quoted: mek, sendEphemeral: true})
 break
 case prefix+ 'bien':
-senpai.sendMessage(from, '*Oh, me alegro :D, yo sÃºper!!*', text, {quoted: mek, sendEphemeral: true})
+senpai.sendMessage(from, '*Oh, me alegro :D, yo super!!*', text, {quoted: mek, sendEphemeral: true})
 break
 case prefix+ 'gracias':
-senpai.sendMessage(from, '*De nada para servirte ðŸ™‡*', text, {quoted: mek, sendEphemeral: true})
+senpai.sendMessage(from, '*De nada para servirte 🙇*', text, {quoted: mek, sendEphemeral: true})
 break
 case prefix+ 'onichan':
-senpai.sendMessage(from, '*ðŸ”¥ Senpai ðŸ”¥*', text, {quoted: { key: {
+senpai.sendMessage(from, '*🔥🔥 Senpai 🔥🔥*', text, {quoted: { key: {
 fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
 },
 message: {
-"documentMessage": { "title": "ðŸ”¥ Papi ðŸ”¥", 'jpegThumbnail': fs.readFileSync('./media/thumb.jpeg')}}
+"documentMessage": { "title": "🔥😈 Papi 😈🔥", 'jpegThumbnail': fs.readFileSync('./media/thumb.jpeg')}}
 }})
 break
 case prefix+ 'xd':
@@ -269,7 +269,7 @@ fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
 },
 message: {
-"documentMessage": { "title": "ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥", 'jpegThumbnail': fs.readFileSync('./media/thumb.jpeg')}}
+"documentMessage": { "title": "🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥", 'jpegThumbnail': fs.readFileSync('./media/thumb.jpeg')}}
 }})
 break
 //ACTIVACI?N
