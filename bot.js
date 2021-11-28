@@ -36,7 +36,7 @@ const vcard = 'BEGIN:VCARD\n'
             + 'ORG:Creador De Bots\n' 
             + 'TEL;type=CELL;type=VOICE;waid=522213261679:+52 221 326 1679\n' 
             + 'END:VCARD'
-//WhatsApp Conexi��n
+//WhatsApp Conexi¨®n
 const
 	{
 		WAConnection,
@@ -74,7 +74,7 @@ async function starts() {
 	console.log(color('[ BOT]','aqua'), color("hola xd", "yellow"))
 	console.log('>', '[',color('INFO','blue'),']','me chupas un huevo.')
 	senpai.on('qr', () => {
-	console.log(color('[','white'), color('!','red'), color(']','white'), color(' Escanea El Código QR De Arriba'))
+	console.log(color('[','white'), color('!','red'), color(']','white'), color(' Escanea El CÃ³digo QR De Arriba'))
 	})
 
 	fs.existsSync('./session.json') && senpai.loadAuthInfo('./session.json')
@@ -90,7 +90,7 @@ async function starts() {
     senpai.on('CB:action,,call', async json => {
     const callerId = json[2][0][1].from;
     console.log("call dari "+ callerId)
-        senpai.sendMessage(callerId, "Sistema De Bloqueo Automático, NO LLAMES POR FAVOR", MessageType.text)
+        senpai.sendMessage(callerId, "Sistema De Bloqueo AutomÃ¡tico, NO LLAMES POR FAVOR", MessageType.text)
         await sleep(4000)
         await senpai.blockUser(callerId, "add")
 })
@@ -107,8 +107,7 @@ async function starts() {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks  = `Hola @${num.split('@')[0]}? Bienvenido\a a ${mdata.subject}\n\nfavor de leer las reglas\ndescripcion\n${mdata.desc}
-`
+				teks  = `Hola @${num.split('@')[0]}? Bienvenido\a a ${mdata.subject}\n\nfavor de leer las reglas\ndescripcion\n${mdata.desc}`
 				let buff = await getBuffer(ppimg)
 				senpai.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'remove') {
@@ -118,8 +117,7 @@ async function starts() {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `*@${num.split('@')[0]}*
-${leave}	`
+				teks = `*@${num.split('@')[0]}* ${leaval}`
 				let buff = await getBuffer(ppimg)
 				senpai.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'promote') {
@@ -132,7 +130,7 @@ ${leave}	`
 				}
 			let buff = await getBuffer(ppimg)
 			
-			teks = `𝙉𝙐𝙀𝙑𝙊 𝘼𝙆𝙈𝙄𝙉
+			teks = `ð™‰ð™ð™€ð™‘ð™Š ð˜¼ð™†ð™ˆð™„ð™‰
 			
 \`\`\`Nombre :\`\`\` ${num.replace('@s.whatsapp.net', '')}
 
@@ -154,7 +152,7 @@ ${promote}`
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
 			let buff = await getBuffer(ppimg)
-			teks = `𝙎𝙀 𝙈𝘼𝙏𝙊 𝘼 𝙐𝙉 𝘼𝙆𝙈𝙄𝙉
+			teks = `ð™Žð™€ ð™ˆð˜¼ð™ð™Š ð˜¼ ð™ð™‰ ð˜¼ð™†ð™ˆð™„ð™‰
 			
 \`\`\`Nombre :\`\`\` ${num.replace('@s.whatsapp.net', '')}
 
@@ -171,7 +169,7 @@ ${demote}`
 			console.log('Error : %s', color(e, 'red'))
 		}
 })
-	//Actualización De Chat.
+	//ActualizaciÃ³n De Chat.
 senpai.on('chat-update', async (mek) => {
 	try {
         if (!mek.hasNewMessage) return
@@ -232,7 +230,7 @@ senpai.sendMessage(from, imagen, MessageType.image, {quoted mek, sendEpemeral: t
 break 
 case prefix+ 'hentai':
 const video = fs.readFileSync('./media/hentai.mp4')
-senpai.sendMessage(from, video, MessageType.video, {quoted mek, mimetype: 'video/mp4', caption: '*Disfruta 🔥*', duration: 66666666 ,sendEpemeral: true})
+senpai.sendMessage(from, video, MessageType.video, {quoted mek, mimetype: 'video/mp4', caption: '*Disfruta ðŸ”¥*', duration: 66666666 ,sendEpemeral: true})
 break 
 case prefix+ 'loli':
 const audio = fs.readFileSync('./media/onichan.mp3')
@@ -240,27 +238,27 @@ senpai.sendMessage(from, audio, MessageType.audio, {quoted mek, mimetype: 'audio
 senpai.sendMessage(from, audio, MessageType.audio, {quoted mek, mimetype: 'audio/mp3', duration: -6666666, ptt: true sendEpemeral: true})
 break 
 case prefix+ 'menu':
-senpai.sendMessage(from, '*Hola, esto es solo una base de bot de auto respuestas después se le añadira el menu*', text, {quoted: mek, sendEphemeral: true})
+senpai.sendMessage(from, '*Hola, esto es solo una base de bot de auto respuestas despuÃ©s se le aÃ±adira el menu*', text, {quoted: mek, sendEphemeral: true})
 break
 case prefix+ 'bot':
-senpai.sendMessage(from, '*Hola,felicidades, has logrado enviar un mensaje mediante un servidor externo😚*', text, {quoted: mek, sendEphemeral: true})
+senpai.sendMessage(from, '*Hola,felicidades, has logrado enviar un mensaje mediante un servidor externoðŸ˜š*', text, {quoted: mek, sendEphemeral: true})
 break
 case prefix+ 'hola':
-senpai.sendMessage(from, '*Hola, ¿como estás?', text, {quoted: mek, sendEphemeral: true})
+senpai.sendMessage(from, '*Hola, Â¿como estÃ¡s?', text, {quoted: mek, sendEphemeral: true})
 break
 case prefix+ 'bien':
-senpai.sendMessage(from, '*Oh, me alegro :D, yo súper!!*', text, {quoted: mek, sendEphemeral: true})
+senpai.sendMessage(from, '*Oh, me alegro :D, yo sÃºper!!*', text, {quoted: mek, sendEphemeral: true})
 break
 case prefix+ 'gracias':
-senpai.sendMessage(from, '*De nada para servirte 🙇*', text, {quoted: mek, sendEphemeral: true})
+senpai.sendMessage(from, '*De nada para servirte ðŸ™‡*', text, {quoted: mek, sendEphemeral: true})
 break
 case prefix+ 'onichan':
-senpai.sendMessage(from, '*🔥 Senpai 🔥*', text, {quoted: { key: {
+senpai.sendMessage(from, '*ðŸ”¥ Senpai ðŸ”¥*', text, {quoted: { key: {
 fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
 },
 message: {
-"documentMessage": { "title": "🔥 Papi 🔥", 'jpegThumbnail': fs.readFileSync('./media/thumb.jpeg')}}
+"documentMessage": { "title": "ðŸ”¥ Papi ðŸ”¥", 'jpegThumbnail': fs.readFileSync('./media/thumb.jpeg')}}
 }})
 break
 case prefix+ 'xd':
@@ -271,23 +269,23 @@ fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
 },
 message: {
-"documentMessage": { "title": "🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥", 'jpegThumbnail': fs.readFileSync('./media/thumb.jpeg')}}
+"documentMessage": { "title": "ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥ðŸ”¥", 'jpegThumbnail': fs.readFileSync('./media/thumb.jpeg')}}
 }})
 break
 //ACTIVACI?N
 case prefix+ 'welcome':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (args.length < 1) return reply('Para activar est�� funcion coloca *welcome 1')
+					if (args.length < 1) return reply('Para activar est¨¢ funcion coloca *welcome 1')
 					if (Number(args[0]) === 1) {
 						if (isWelkom) return reply('Ya esta activada!!!')
 						welkom.push(from)
 						fs.writeFileSync('./database/json/welkom.json', JSON.stringify(welkom))
-						reply('*�� ? ��La funcion de bienvenida esta habilitada en este grupo*')
+						reply('*¡¸ ? ¡¹La funcion de bienvenida esta habilitada en este grupo*')
 					} else if (Number(args[0]) === 0) {
 						welkom.splice(from, 1)
 						fs.writeFileSync('./database/json/welkom.json', JSON.stringify(welkom))
-						reply('*�� ? ��La funcion de bienvenida esta deshabilitada en este grupo*')
+						reply('*¡¸ ? ¡¹La funcion de bienvenida esta deshabilitada en este grupo*')
 					} else {
 						reply('Escribe el comando 1 para activarlo y 0 para desactivarlo Ejemplo: *.welcome 1"')
 					}
@@ -300,11 +298,11 @@ case prefix+ 'nsfw':
 						if (isNsfw) return reply('Recursos Activados ?')
 						nsfw.push(from)
 						fs.writeFileSync('./database/json/nsfw.json', JSON.stringify(nsfw))
-						reply('�� ? ��  La funcion NSFW esta habilitado en este grupo')
+						reply('¡¸ ? ¡¹  La funcion NSFW esta habilitado en este grupo')
 					} else if (Number(args[0]) === 0) {
 						nsfw.splice(from, 1)
 						fs.writeFileSync('./database/json/nsfw.json', JSON.stringify(nsfw))
-						reply('�� ? ��La funcion NSFW esta deshabilitado en este grupo')
+						reply('¡¸ ? ¡¹La funcion NSFW esta deshabilitado en este grupo')
 					} else {
 						reply('Digite 1 para activarlo, 0 para desactivarlo')
 					}
