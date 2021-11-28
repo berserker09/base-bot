@@ -94,8 +94,8 @@ message: {
 "documentMessage": { "title": "🔥 Papi 🔥", 'jpegThumbnail': fs.readFileSync('./media/thumb.jpeg')}}
 }})
 break
-case 'xd'
-case 'xD'
+case 'xd':
+case 'xD':
 case 'XD':
 senpai.sendMessage(from, '*XD?, xd que es follame?*', text, {quoted: { key: {
 fromMe: false,
