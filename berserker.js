@@ -21,7 +21,7 @@ async function iniciar () {
 	console.log('Conectando...')
 	})
 	senpai.on('open', () => {
-	console.log('Conectado'))
+	console.log('Conectado')
 	})
 		await senpai.connect({timeoutMs: 30*1000})
   fs.writeFileSync('./session.json', JSON.stringify(senpai.base64EncodedAuthInfo(), null, '\t'))
