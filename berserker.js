@@ -3,8 +3,8 @@ const
         WAConnection,
         Mimetype,
         MessageType,
-         } = require('@adiwajshing/baileys');
-//==================================\\
+        } = require('@adiwajshing/baileys');
+
 const fs = require('fs');
 const prefix = '.'
 
@@ -26,6 +26,7 @@ async function iniciar () {
 	})
 		await senpai.connect({timeoutMs: 30*1000})
   fs.writeFileSync('./session.json', JSON.stringify(senpai.base64EncodedAuthInfo(), null, '\t'))
+
 senpai.on('chat-update', async (mek) => {
 try {	  
 if (!mek.hasNewMessage) return
@@ -77,17 +78,8 @@ const pushname = mek.key.fromMe ? senpai.user.name : conts.notify || conts.vname
 
 switch (command) {
 
-case 'hentai':
-const video = fs.readFileSync('./media/hentai.mp4')
-senpai.sendMessage(from, video, MessageType.video, {quoted mek, mimetype: 'video/mp4', caption: '*Disfruta 😈🔥*', duration: 66666666, sendEpemeral: true})
-break 
-case 'loli':
-const audio = fs.readFileSync('./media/onichan.mp3')
-senpai.sendMessage(from, audio, MessageType.audio, {quoted mek, mimetype: 'audio/mp3', duration: -6666666})
-senpai.sendMessage(from, audio, MessageType.audio, {quoted mek, mimetype: 'audio/mp3', duration: -6666666, ptt: true sendEpemeral: true})
-break 
 case 'bot':
-senpai.sendMessage(from, '*Hola,felicidades, has logrado enviar un mensaje mediante un servidor externo?*', text, {quoted: mek, sendEphemeral: true})
+senpai.sendMessage(from, '*Hola,felicidades, has logrado enviar un mensaje mediante un servidor externo😚*', text, {quoted: mek, sendEphemeral: true})
 break
 case 'hola':
 senpai.sendMessage(from, '*Hola, ¿Como estás?*', text, {quoted: mek, sendEphemeral: true})
