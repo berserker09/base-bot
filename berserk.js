@@ -3,7 +3,7 @@ const
         WAConnection,
         Mimetype,
         MessageType,
-         } = require('@adiwajshing/baileys');
+        } = require('@adiwajshing/baileys');
 //==================================\\
 const fs = require('fs');
 const prefix = '.'
