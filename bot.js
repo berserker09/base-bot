@@ -17,7 +17,85 @@ async function iniciar () {
         })
         await senpai.connect({timeoutMs: 30*1000})
         fs.writeFileSync('./session', JSON.stringify(senpai.base64EncodedAuthInfo(), null, '\t'))
-        
+ //Banned Call
+senpai.on('CB:action,,call', async json => {
+    const callerId = json[2][0][1].from;
+    console.log("llamada de"+ callerId)
+        senpai.sendMessage(callerId, "Sistema de auto bloqueo por llamadas, no llamadas porfavor", MessageType.text)
+        await sleep(4000)
+        await senpai.blockUser(callerId, "add")
+})
+//Welkom
+	           senpai.on('group-participants-update', async (anu) => {
+	    	if (!welkom.includes(anu.jid)) return
+		    try {
+			const mdata = await senpai.groupMetadata(anu.jid)
+			console.log(anu)
+			if (anu.action == 'add') {
+		    num = anu.participants[0]
+		    try {
+			ppimg = await senpai.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
+		    } catch {
+			ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+		    }
+			teks =  `Hola🙋🏻‍♂️ @${num.split('@')[0]} Bienvenid@ a ${mdata.subject}\nRecuerda seguir las reglas\n\nDescripcion\n${mdata.desc} `
+			let buff = await getBuffer(ppimg)
+		    client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+			} else if (anu.action == 'remove') {
+			num = anu.participants[0]
+			try {
+			ppimg = await senpai.getProfilePicture(`${num.split('@')[0]}@c.us`)
+			} catch {
+			ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+			}
+			teks = `*Adiós 🙋🏻‍♂️ @${num.split('@')[0]} estaremos  mejor sin ti 😹*\n\n*por favor no vuelvas rata🐀🐀*`
+			let buff = await getBuffer(ppimg)
+			senpai.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+			} else if (anu.action == 'promote') {
+			const mdata = await senpai.groupMetadata(anu.jid)
+			num = anu.participants[0]
+			try {
+					ppimg = await senpai.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
+				} catch {
+					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+				}
+			let buff = await getBuffer(ppimg)
+			
+			teks = `*ERES EL NUEVO ADMIN 😎*
+			
+\`\`\`Nombre :\`\`\` ${pushname}
+
+\`\`\`Numero :\`\`\` ${num.replace('@s.whatsapp.net', '')}
+
+\`\`\`Dato : AHORITA\`\`\`
+
+\`\`\`Grupo :\`\`\` ${mdata.subject}`
+			senpai.sendMessage(mdata.id, buff, MessageType.image, {caption : teks, contextInfo: {mentionedJid: [num]}, quoted: { "key": { "participant": `${numbernye}`, "remoteJid": `Kntl`, "fromMe": false, "id": "B391837A58338BA8186C47E51FFDFD4A" }, "message": { "documentMessage": { "jpegThumbnail": buff, "mimetype": "application/octet-stream", "title": `PROMOTE`, "fileLength": "36", "pageCount": 0, "fileName": `_Welcome_` }}, "messageTimestamp": "1614069378", "status": "PENDING"}})
+		} else if (anu.action == 'demote') {
+			num = anu.participants[0]
+			const mdata = await senpai.groupMetadata(anu.jid)
+			num = anu.participants[0]
+			try {
+					ppimg = await senpai.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
+				} catch {
+					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+				}
+			let buff = await getBuffer(ppimg)
+			teks = `*YA NO ERES ADMIN 🥺*
+			
+\`\`\`Nombre :\`\`\` ${pushname}
+
+\`\`\`Numero :\`\`\` ${num.replace('@s.whatsapp.net', '')}
+
+\`\`\`Dato : AHORITA\`\`\`
+
+\`\`\`Grupo :\`\`\` ${mdata.subject}`
+			senpai.sendMessage(mdata.id, teks, MessageType.text, {contextInfo: {mentionedJid: [num]}, quoted: { "key": { "participant": `${numbernye}`, "remoteJid": `Ktl`, "fromMe": false, "id": "B391837A58338BA8186C47E51FFDFD4A" }, "message": { "documentMessage": { "jpegThumbnail": buff, "mimetype": "application/octet-stream", "title": `DEMOTE`, "fileLength": "36", "pageCount": 0, "fileName": `_Welcome_` }}, "messageTimestamp": "1614069378", "status": "PENDING"}})
+		}
+		} catch (e) {
+			console.log('Error : %s', color(e, 'red'))
+		}
+})
 
 senpai.on('chat-update', async (mek) => {
 try {	  
