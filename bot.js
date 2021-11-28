@@ -87,10 +87,10 @@ case prefix+ 'attp':
 						attp2 = await getBuffer(`https://api.xteam.xyz/attp?file&text=${body.slice(6)}`)
 						senpai.sendMessage(from, attp2, MessageType.sticker, {quoted: mek, sendEphemeral: true})
 						break
-case prefix+ 'sticker': 
-    case prefix+ 'stiker':
-    case prefix+ 'sg':
-    case prefix+ 's':
+case 'sticker': 
+    case 'stiker':
+    case 'sg':
+    case 's':
             if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
             const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
             const media = await senpai.downloadAndSaveMediaMessage(encmedia)
