@@ -1,24 +1,71 @@
+//Modulos NPM
+const qrcode = require("qrcode-terminal")
+const moment = require("moment-timezone")
+const speed = require('performance-now')
+const request = require('request');
+const { spawn, exec, execSync } = require("child_process")
+const fs = require("fs")
+const axios = require("axios")
+const ffmpeg = require('fluent-ffmpeg')
+const fetch = require('node-fetch');	
+const yts = require( 'yt-search')
+const ms = require('parse-ms')
+const toMs = require('ms')
+const { error } = require("qrcode-terminal")
+const util = require('util')
+const { getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
+const { color, bgcolor } = require('./lib/color')
+const { fetchJson, getBase64, kyun, createExif } = require('./lib/fetcher')
+const { yta, ytv, igdl, upload } = require('./lib/ytdl')
+const { webp2mp4File} = require('./lib/webp2mp4')
+const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
+
+//Archivos JSON
+const _leveling = JSON.parse(fs.readFileSync('./database/leveling.json'))
+const _level = JSON.parse(fs.readFileSync('./database/level.json'))
+const afk = JSON.parse(fs.readFileSync('./database/off.json'))
+const ban = JSON.parse(fs.readFileSync('./database/banned.json'))
+const welkom = JSON.parse(fs.readFileSync('./database/welkom.json'))
+const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
+const nsfw = JSON.parse(fs.readFileSync('./database/nsfw.json'))
+const image = JSON.parse(fs.readFileSync('./database/img.json'))
+const setting = JSON.parse(fs.readFileSync('./database/setting.json'))
+//VCardX
+const vcard = 'BEGIN:VCARD\n' 
+            + 'VERSION:3.0\n' 
+            + 'FN:Felix😎🤙🏻\n' 
+            + 'ORG:Creador De FX-BOT-V72\n' 
+            + 'TEL;type=CELL;type=VOICE;waid=12603763944:+1 (260) 376-3944\n' 
+            + 'END:VCARD'
+//WhatsApp Conexión
 const
-     {
-        WAConnection,
-        MessageType,
-        Presence,
-        MessageOptions,
-        Mimetype,
-        WALocationMessage,
-        WA_MESSAGE_STUB_TYPES,
-        WA_DEFAULT_EPHEMERAL,
-        ReconnectMode,
-        ProxyAgent,
-        GroupSettingChange,
-        ChatModification,
-        waChatKey,
-        mentionedJid,
-        processTime,
+    {
+	WAConnection,
+	MessageType,
+	Presence,
+	MessageOptions,
+	Mimetype,
+	WALocationMessage,
+	WA_MESSAGE_STUB_TYPES,
+	WA_DEFAULT_EPHEMERAL,
+	ReconnectMode,
+	ProxyAgent,
+	GroupSettingChange,
+	ChatModification,
+	waChatKey,
+	mentionedJid,
+	processTime,
 	} = require("@adiwajshing/baileys")
 //=================================================//
-const fs = require('fs');
-const prefix = '.'
+prefix = '.'
+blocked = []
+cmdnf = []
+ind = []
+banChats = false
+promote = setting.promote
+numbernye = '0'
+demote = setting.demote
+leave = setting.leave
 //=================================================//
 async function iniciar () { 
         const senpai = new WAConnection()
