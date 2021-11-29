@@ -4,10 +4,10 @@ const
         Mimetype,
         MessageType,
         } = require('@adiwajshing/baileys');
-
+//-------------------------------------------\\
 const fs = require('fs');
 const prefix = '.'
-
+//--------------------------------------------\\
 async function iniciar () { 
         const senpai = new WAConnection()
         senpai.logger.level = 'warn'
@@ -78,7 +78,7 @@ const pushname = mek.key.fromMe ? senpai.user.name : conts.notify || conts.vname
 switch (command) {
 
 case 'bot':
-senpai.sendMessage(from, '*Hola,felicidades, has logrado enviar un mensaje mediante un servidor externo😚*', text, {quoted: mek, sendEphemeral: true})
+senpai.sendMessage(from, '*Hola, felicidades, has logrado enviar un mensaje mediante un servidor externo😚*', text, {quoted: mek, sendEphemeral: true})
 break
 case 'hola':
 senpai.sendMessage(from, '*Hola, ¿Como estás?*', text, {quoted: mek, sendEphemeral: true})
