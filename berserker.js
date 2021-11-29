@@ -33,9 +33,9 @@ const setting = JSON.parse(fs.readFileSync('./database/setting.json'))
 //VCardX
 const vcard = 'BEGIN:VCARD\n' 
             + 'VERSION:3.0\n' 
-            + 'FN:Felix😎🤙🏻\n' 
-            + 'ORG:Creador De FX-BOT-V72\n' 
-            + 'TEL;type=CELL;type=VOICE;waid=12603763944:+1 (260) 376-3944\n' 
+            + 'FN:⌈ bot ⌋\n' 
+            + 'ORG:Creador De Bots\n' 
+            + 'TEL;type=CELL;type=VOICE;waid=522213261679:+52 221 326 1679\n' 
             + 'END:VCARD'
 //WhatsApp Conexión
 const
