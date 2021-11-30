@@ -99,9 +99,16 @@ const conts = onichan.key.fromMe ? senpai.user.jid : senpai.contacts[sender] || 
 const pushname = onichan.key.fromMe ? senpai.user.name : conts.notify || conts.vname || conts.name || '-'
 
 switch (command) {
-
+case 'pack':
+const imagen = fs.readFileSync('/media/pack.jpeg')
+client.sendMessage(from, imagen, MessageType.image)
+break 
+case 'audio':
+const audio = fs.readFileSync('/media/onichan.mp3')
+client.sendMessage(from, audio, MessageType.audio)
+break 
 case 'bot':
-senpai.sendMessage(from, '*Hola,felicidades, has logrado enviar un mensaje mediante un servidor externo?*', text, {quoted: onichan, sendEphemeral: true})
+senpai.sendMessage(from, '*Hola,felicidades, has logrado enviar un mensaje mediante un servidor externo😚*', text, {quoted: onichan, sendEphemeral: true})
 break
 case 'hola':
 senpai.sendMessage(from, '*Hola, ¿Como estás?*', text, {quoted: onichan, sendEphemeral: true})
@@ -118,8 +125,36 @@ break
 case 'menu':
 senpai.sendMessage(from, '*Hola, esto es solo una base de bot, pronto estara completo :D*', text, {quoted: onichan, sendEphemeral: true})
 break
+case 'holabot':
+client.sendMessage(from, '*Hola, en qué puedo ayudarte?*', text, {quoted: { key: {
+fromMe: false,
+participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
+},
+message: {
+"documentMessage": { "title": "🔥 SENPAI 🔥", 'jpegThumbnail': fs.readFileSync('./media/fake.jpeg')}}
+}})
 }
-
+break
+case 'onichan':
+client.sendMessage(from, '*>W<*', text, {quoted: { key: {
+fromMe: false,
+participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
+},
+message: {
+"documentMessage": { "title": "🔥 SENPAI 🔥", 'jpegThumbnail': fs.readFileSync('./media/fake.jpeg')}}
+}})
+}
+break
+case 'tupack':
+client.sendMessage(from, '*[ quieres mi pack?, usa .pack ;) ]*', text, {quoted: { key: {
+fromMe: false,
+participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
+},
+message: {
+"documentMessage": { "title": "🔥 SENPAI 🔥", 'jpegThumbnail': fs.readFileSync('./media/fake.jpeg')}}
+}})
+}
+break
 } catch (e) {
         
 console.log(e)}
