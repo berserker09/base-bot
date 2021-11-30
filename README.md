@@ -1,7 +1,7 @@
 # Un Simple Bot De Auto Respuestas
 
 <p align="center">
-<img src="./media/thumb.jpeg" width="300" height="480"/>
+<img src="./media/logo4.jpeg" width="410" height="300"/>
 </p>
 
 # Mis redes
