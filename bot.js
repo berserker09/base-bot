@@ -133,7 +133,6 @@ participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : 
 message: {
 "documentMessage": { "title": "🔥 SENPAI 🔥", 'jpegThumbnail': fs.readFileSync('./media/fake.jpeg')}}
 }})
-}
 break
 case 'onichan':
 client.sendMessage(from, '*>W<*', text, {quoted: { key: {
@@ -143,7 +142,6 @@ participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : 
 message: {
 "documentMessage": { "title": "🔥 SENPAI 🔥", 'jpegThumbnail': fs.readFileSync('./media/fake.jpeg')}}
 }})
-}
 break
 case 'tupack':
 client.sendMessage(from, '*[ quieres mi pack?, usa .pack ;) ]*', text, {quoted: { key: {
@@ -153,8 +151,9 @@ participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : 
 message: {
 "documentMessage": { "title": "🔥 SENPAI 🔥", 'jpegThumbnail': fs.readFileSync('./media/fake.jpeg')}}
 }})
-}
 break
+
+}
 } catch (e) {
         
 console.log(e)}
