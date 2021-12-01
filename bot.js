@@ -20,8 +20,39 @@ const {
 //
 const fs = require('fs');
 const prefix = '.'
-const { color } = require("./lib/color");
-const {  getBuffer, h2k,  generateMessageID, getGroupAdmins,getRandom, banner,  start,  info, success, close,} = require("./lib/functions");
+const qrcode = require("qrcode-terminal")
+const moment = require("moment-timezone")
+const speed = require('performance-now')
+const request = require('request');
+const { spawn, exec, execSync } = require("child_process")
+const fs = require("fs")
+const axios = require("axios")
+const ffmpeg = require('fluent-ffmpeg')
+const { EmojiAPI } = require("emoji-api");
+const tik = require('tiktok-scraper-without-watermark')
+const ig = require('insta-fetcher')
+const emoji = new EmojiAPI()
+const fetch = require('node-fetch');
+const Fb = require('fb-video-downloader');
+const twitterGetUrl = require("twitter-url-direct")
+const phoneNum = require('awesome-phonenumber')
+const gis = require('g-i-s');
+const got = require("got");
+const imageToBase64 = require('image-to-base64');
+const ID3Writer = require('browser-id3-writer');		
+const brainly = require('brainly-scraper')
+const yts = require( 'yt-search')
+const ms = require('parse-msis')
+const toMs = require('ms')
+const { error } = require("qrcode-terminal")
+const util = require('util')
+const { getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
+const { color, bgcolor } = require('./lib/color')
+const { fetchJson, getBase64, kyun, createExif } = require('./lib/fetcher')
+const { yta, ytv, igdl, upload } = require('./lib/ytdl')
+const { webp2mp4File} = require('./lib/webp2mp4')
+const { sleep, isAfk, cekafk, addafk } = require('./lib/offline')
+const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
 //
 async function iniciar () { 
 	const senpai = new WAConnection()
