@@ -22,9 +22,10 @@ const fs = require('fs');
 const prefix = '.'
 const { getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { color, bgcolor } = require('./lib/color')
+const { fetchJson, getBase64, kyun, createExif } = require('./lib/fetcher')
 //
-const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
-const welkom = JSON.parse(fs.readFileSync('./database/welkom.json'))
+const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
+const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 //
 async function iniciar () { 
 	const senpai = new WAConnection()
