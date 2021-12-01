@@ -53,6 +53,13 @@ const { yta, ytv, igdl, upload } = require('./lib/ytdl')
 const { webp2mp4File} = require('./lib/webp2mp4')
 const { sleep, isAfk, cekafk, addafk } = require('./lib/offline')
 const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
+//json file
+const _leveling = JSON.parse(fs.readFileSync('./database/leveling.json'))
+const _level = JSON.parse(fs.readFileSync('./database/level.json'))
+const afk = JSON.parse(fs.readFileSync('./database/off.json'))
+const welkom = JSON.parse(fs.readFileSync('./database/welkom.json'))
+const antilink = JSON.parse(fs.readFileSync('./database/antilink.json'))
+const msg = require("./lib/message")
 //
 async function iniciar () { 
 	const senpai = new WAConnection()
