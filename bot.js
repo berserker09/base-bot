@@ -381,6 +381,25 @@ logo = `https://api.zeks.xyz/api/gtext?apikey=apivinz&text1=${texto1}&text2=${te
 sendFileFromUrl(logo, image, {quoted: fimg, caption: '*🔥 𝘓𝘰𝘨𝘰𝘴 𝘉𝘺 𝘚𝘢𝘮𝘶𝟥𝟥𝟢 🔥*', sendEphemeral: true})
 break
 
+case 'entrabot':
+linkgp = args.join(' ')
+if (!linkgp) return reply('Y el link del grupo... onta!?')
+samunum = '522213261679@swahtsapp.net'		
+var eb = q.split('https://chat.whatsapp.com/')[1]
+var { id, owner, subject, subjectOwner, desc, descId, participants, size, descOwner, descTime, creation} = await senpai.query({ 
+json: ["query", "invite", eb],
+expect200:true })
+
+senpai.query({
+json:["action", "invite", `${args[0].replace('https://chat.whatsapp.com/','')}`]
+})
+reply('Ya entre al grupo😉')
+senpai.sendMessage(id, `*Hola* 🙋🏻‍♂️\n [ @${samunum.split('@')[0]} ],\n@${sender.split('@')[0]} me ha asignado como *BOT* para este grupo *(@${subject.split('@')[0]})*\n\n*Informacion de este grupo:*\n\👑Creador: @${owner.split('@')[0]}\n📚 Fecha de creacion: ${Date(creation * 1000)}\n\nTotal de participantes: ${participants}*\nQuien escribio la descripcion? ${descOwner}\n✏ Descripcion:\n${desc}\n\n*Porfavor sige mis reglas, para leer mis reglas escribe:*\n${prefix}reglas\nPorfavor sigelas o atente a las consecuencias⚠\n*Quedo a su dispocicion, no me agan sentir mal.... por que yo tambien tengo corazon😣*`, MessageType.text, {quoted: { key: {
+fromMe: false,
+participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
+}, message: {"documentMessage": { "title": `${subject}`, 'jpegThumbnail': fs.readFileSync('./media/fake.jpeg')}}}})
+break
+
 }
 } catch (e) {
         
