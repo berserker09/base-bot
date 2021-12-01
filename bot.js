@@ -402,20 +402,10 @@ break
 
 }
 } catch (e) {
-const emror = String(e)
-if (emror.includes('convert')){ 
-return
+        
+console.log(e)}
+        
+})      
 }
-if (emror.includes('this.isZero')){ 
-return
-}	
-if (emror.includes('fileLength')){                           
-return
-}
-if (emror.includes('jid')){                           
-return
-}
-console.log(chalk.greenBright("├"), chalk.keyword("yellow")("[  ERROR  ]"), chalk.keyword("red")(e))
-}
-})
-
+iniciar ()
+.catch (err => console.log("unexpected error: " + err))
