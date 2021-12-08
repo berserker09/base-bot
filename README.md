@@ -1,4 +1,4 @@
-# Un Simple Bot De Auto Respuestas
+# Una Simple Base De Bot
 
 <p align="center">
 <img src="./media/33.jpg" width="300" height="400"/>
