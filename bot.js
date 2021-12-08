@@ -2,71 +2,53 @@ const {
     WAConnection,
     MessageType,
     Presence, 
-    MessageOptions,
     Mimetype,
-    WALocationMessage,
-    WA_MESSAGE_STUB_TYPES,
-    ReconnectMode,
-    ProxyAgent,
-    GroupSettingChange,
-    ChatModification,
-    waChatKey,
-    WA_DEFAULT_EPHEMERAL,
-    mentionedJid,
-    prepareMessageFromContent, 
-    Browsers,
-    processTime
     } = require("@adiwajshing/baileys")
-//
 const fs = require('fs');
 const prefix = '.'
-const { getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
-const { color, bgcolor } = require('./lib/color')
-//
-const antilink = JSON.parse(fs.readFileSync('./src/antilink.json'))
-const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
-//
+const { color, bgcolor } = require('./media/color')
+
 async function iniciar () { 
-	const senpai = new WAConnection()
-        senpai.logger.level = 'warn'
-        senpai.version = [2, 2143, 3]
+	const client = new WAConnection()
+        client.logger.level = 'warn'
+        client.version = [2, 2143, 3]
 	console.log('>', color('INFO','blue'),'Escanea el código ( qr ) a continuación...')
-	senpai.on('qr', () => {
+	client.on('qr', () => {
 	console.log(color('[','white'), color('!','red'), color(']','white'), color(' Escanea el código qr'))
 	})
 
-	fs.existsSync('./session.json') && senpai.loadAuthInfo('./session.json')
-	senpai.on('connecting', () => {
+	fs.existsSync('./session.json') && client.loadAuthInfo('./session.json')
+	client.on('connecting', () => {
 	console.log(color('> INFO ', 'white'), color('Conectando...'))
 	})
-	senpai.on('open', () => {
+	client.on('open', () => {
 	console.log(color('> INFO ', 'white'), color('Conectado'))
 	})
-		await senpai.connect({timeoutMs: 30*1000})
-  fs.writeFileSync('./session.json', JSON.stringify(senpai.base64EncodedAuthInfo(), null, '\t'))
+		await client.connect({timeoutMs: 30*1000})
+  fs.writeFileSync('./session.json', JSON.stringify(client.base64EncodedAuthInfo(), null, '\t'))
   
-senpai.on('chat-update', async (onichan) => {
+client.on('chat-update', async (mek) => {
 try {	  
-if (!onichan.hasNewMessage) return
-if (!onichan.messages) return
-if (onichan.key && onichan.key.remoteJid == 'status@broadcast') return
+if (!mek.hasNewMessage) return
+if (!mek.messages) return
+if (mek.key && mek.key.remoteJid == 'status@broadcast') return
 
-onichan = onichan.messages.all()[0]
-if (!onichan.message) return
+mek = mek.messages.all()[0]
+if (!mek.message) return
 global.blocked
-onichan.message = (Object.keys(onichan.message)[0] === 'ephemeralMessage') ? onichan.message.ephemeralMessage.message : onichan.message
-const from = onichan.key.remoteJid
-const type = Object.keys(onichan.message)[0]        
-const quoted = type == 'extendedTextMessage' && onichan.message.extendedTextMessage.contextInfo != null ? onichan.message.extendedTextMessage.contextInfo.quotedMessage || [] : []
+mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
+const from = mek.key.remoteJid
+const type = Object.keys(mek.message)[0]        
+const quoted = type == 'extendedTextMessage' && mek.message.extendedTextMessage.contextInfo != null ? mek.message.extendedTextMessage.contextInfo.quotedMessage || [] : []
 const typeQuoted = Object.keys(quoted)[0]
-const content = JSON.stringify(onichan.message)
+const content = JSON.stringify(mek.message)
 const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
-const body = onichan.message.conversation || onichan.message[type].caption || onichan.message[type].text || ""
-chats = (type === 'conversation') ? onichan.message.conversation : (type === 'extendedTextMessage') ? onichan.message.extendedTextMessage.text : ''
-budy = (type === 'conversation' && onichan.message.conversation.startsWith(prefix)) ? onichan.message.conversation : (type == 'imageMessage') && onichan.message.imageMessage.caption.startsWith(prefix) ? onichan.message.imageMessage.caption : (type == 'videoMessage') && onichan.message.videoMessage.caption.startsWith(prefix) ? onichan.message.videoMessage.caption : (type == 'extendedTextMessage') && onichan.message.extendedTextMessage.text.startsWith(prefix) ? onichan.message.extendedTextMessage.text : ''
+const body = mek.message.conversation || mek.message[type].caption || mek.message[type].text || ""
+chats = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
+budy = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : ''
 
 const reply = (teks) => {	
-          senpai.sendMessage(from, teks, text, {sendEphemeral: true, quoted: onichan})
+          client.sendMessage(from, teks, text, {sendEphemeral: true, quoted: mek})
           }
         const isUrl = (url) => {
             return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
@@ -91,71 +73,19 @@ const arg = chats.slice(command.length + 2, chats.length)
 const args = budy.trim().split(/ +/).slice(1)
 const isCmd = budy.startsWith(prefix)
 const q = args.join(' ')
-const soyYo = senpai.user.jid
-const botNumber = senpai.user.jid.split("@")[0]
-const ownerNumber = ['522213261679@s.whatsapp.net']
+const soyYo = client.user.jid
+const botNumber = client.user.jid.split("@")[0]
+const ownerNumber = ['tu número@s.whatsapp.net']
 const isGroup = from.endsWith('@g.us')
-const sender = onichan.key.fromMe ? senpai.user.jid : isGroup ? onichan.participant : onichan.key.remoteJid
+const sender = mek.key.fromMe ? client.user.jid : isGroup ? mek.participant : mek.key.remoteJid
 const senderNumber = sender.split("@")[0]
 const isMe = senderNumber == botNumber
-const conts = onichan.key.fromMe ? senpai.user.jid : senpai.contacts[sender] || { notify: jid.replace(/@.+/, '') }
-const pushname = onichan.key.fromMe ? senpai.user.name : conts.notify || conts.vname || conts.name || '-'
+const conts = mek.key.fromMe ? client.user.jid : client.contacts[sender] || { notify: jid.replace(/@.+/, '') }
+const pushname = mek.key.fromMe ? client.user.name : conts.notify || conts.vname || conts.name || '-'
 
 switch (command) {
-
-case 'pack':
-const imagen = fs.readFileSync('/media/pack.jpeg')
-senpai.sendMessage(from, imagen, MessageType.image)
-break 
-case 'audiololi':
-addFilter(from)
-aud = fs.readFileSync('./media/onichan.mp3') 
-senpai.sendMessage(from, aud, audio, {quoted: faud, mimetype: 'audio/mp4', ptt: true, duration: -999999, sendEphemeral: true}) 
-break
 case 'bot':
-senpai.sendMessage(from, '*Hola,felicidades, has logrado enviar un mensaje mediante un servidor externo😚*', text, {quoted: onichan, sendEphemeral: true})
-break
-case 'hola':
-senpai.sendMessage(from, '*Hola, ¿Como estás?*', text, {quoted: onichan, sendEphemeral: true})
-break
-case 'bien':
-senpai.sendMessage(from, '*oh me alegro, yo súper*', text, {quoted: onichan, sendEphemeral: true})
-break
-case 'gracias':
-senpai.sendMessage(from, '*de nada, para servirte 🙇*', text, {quoted: onichan, sendEphemeral: true})
-break
-case ':b':
-senpai.sendMessage(from, '*:D*', text, {quoted: onichan, sendEphemeral: true})
-break
-case 'menu':
-senpai.sendMessage(from, '*Hola, esto es solo una base de bot, pronto estara completo :D*', text, {quoted: onichan, sendEphemeral: true})
-break
-case 'holabot':
-senpai.sendMessage(from, '*Hola, en qué puedo ayudarte?*', text, {quoted: { key: {
-fromMe: false,
-participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
-},
-message: {
-"documentMessage": { "title": "🔥 SENPAI 🔥", 'jpegThumbnail': fs.readFileSync('./media/fake.jpeg')}}
-}})
-break
-case 'onichan':
-senpai.sendMessage(from, '*>W<*', text, {quoted: { key: {
-fromMe: false,
-participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
-},
-message: {
-"documentMessage": { "title": "🔥 SENPAI 🔥", 'jpegThumbnail': fs.readFileSync('./media/fake.jpeg')}}
-}})
-break
-case 'tupack':
-senpai.sendMessage(from, '*[ quieres mi pack?, usa ${prefix}pack ;) ]*', text, {quoted: { key: {
-fromMe: false,
-participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
-},
-message: {
-"documentMessage": { "title": "🔥 SENPAI 🔥", 'jpegThumbnail': fs.readFileSync('./media/fake.jpeg')}}
-}})
+client.sendMessage(from, '*Hola, ¿Como estás?*', text, {quoted: mek, sendEphemeral: true})
 break
 
 }
@@ -167,3 +97,4 @@ console.log(e)}
 }
 iniciar ()
 .catch (err => console.log("unexpected error: " + err))
+
