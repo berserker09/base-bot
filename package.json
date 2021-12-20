@@ -1,7 +1,7 @@
 {
-  "name": "base bot |  by berserker09",
+  "name": "base bot",
   "version": "1.0.0",
-  "description": "Only termux",
+  "description": "Only Termux",
   "main": "bot.js",
   "directories": {
     "lib": "lib"
