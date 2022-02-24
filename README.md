@@ -1,5 +1,5 @@
 # Hola 👋
-#### * Esto es una simple base de bot funcional :D
+* Esto es una simple base de bot funcional :D
 
 <p align="center">
 <img src="./media/33.jpg" width="300" height="400"/>
